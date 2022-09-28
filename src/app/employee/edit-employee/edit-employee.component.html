@@ -1,0 +1,11 @@
+<form>
+  <div class="mb-3">
+    <label for="Employee" class="form-label">Identification type:</label>
+    <!--<input type="text" class="form-control" name="identificationIdType" [(ngModel)=]> -->
+    <select class="form-control" name="identificationTypeId" id="identificationTypeId">
+      <option *ngFor="let idtype of identificationTypesList$|async" [value]="idtype.id">{{idtype.option}}</option>
+    </select>
+    <label for="Employee" class="form-label">ID number:</label>
+  </div>
+  <select class= "form-control" name="" id=""></select>
+</form>
