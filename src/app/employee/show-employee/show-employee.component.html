@@ -1,4 +1,6 @@
-<button type="button" class="btn btn-info btn-lg" (click)="openModal()">Add employee</button>
+<div class="search-hero">
+  <input class="form-control" type="text" name="search" autocomplete="off" [(ngModel)]="searchText" placeholder="Look for an specific employee by ANY means necesary">
+</div>
 <table class="table table-striped">
   <thead>
     <th>ID</th>
@@ -8,9 +10,10 @@
     <th>Lastname</th>
     <th>Area</th>
     <th>Subarea</th>
+    <th>Options</th>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of returnedArray">
+    <tr *ngFor="let employee of returnedArray |filter:searchText">
       <td>{{employee.id}}</td>
       <td>{{IdentificationTypeMap.get(employee.identificationTypeId)}}</td>
       <td>{{employee.idNumber}}</td>
@@ -18,23 +21,24 @@
       <td>{{employee.lastname}}</td>
       <td>{{AreaTypeMap.get(employee.identificationTypeId)}}</td>
       <td>{{employee.subArea}}</td>
+      <td><button type="button" class="btn btn-secondary" (click)="changeEmployee()">Edit</button></td>
   </tbody>
 </table>
-<pagination [totalItems]="22" (pageChanged)="pageChanged($event)"></pagination>
+<pagination [totalItems]="listLength" (pageChanged)="pageChanged($event)"></pagination>
 
-    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
-         <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                     <div class="modal-header">
-                           <h4 class="modal-title">New employee</h4>
-                           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-                         </div>
-                <div class="modal-body">
-                           <p>Model body text</p>
-                         </div>
-                     <div class="modal-footer">
-                           <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
-                         </div>
-            </div>
-             </div>
- </div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+              <div class="modal-header">
+                    <h4 class="modal-title">New employee</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                  </div>
+         <div class="modal-body">
+          <app-change-employee [employee]="employee"></app-change-employee>
+                  </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+                  </div>
+     </div>
+      </div>
+</div>

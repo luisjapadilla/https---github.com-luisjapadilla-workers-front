@@ -10,13 +10,16 @@ import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.co
 import { WorkersApiService } from './workers-api.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ChangeEmployeeComponent } from './employee/change-employee/change-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     ShowEmployeeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    ChangeEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
     ReactiveFormsModule,
     NgbModule,
     PaginationModule,
+    Ng2SearchPipeModule,
   ],
   providers: [
     WorkersApiService,

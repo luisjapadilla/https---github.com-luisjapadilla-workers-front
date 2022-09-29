@@ -16,6 +16,11 @@ export class ShowEmployeeComponent implements OnInit {
   areaTypesList$!:Observable<any[]>;
   areaTypesList:any=[];
   display = "none";
+  searchText: any;
+
+  listLength:number = 1;
+
+  employee:any;
 
   returnedArray?: any[];
 
@@ -29,9 +34,20 @@ export class ShowEmployeeComponent implements OnInit {
     this.areaTypesList$ = this.service.getAreaTypesList();
     this.OganizeidentificationType();
     this.OganizeArea();
+    this.getlength();
     this.employeeList$.subscribe(x => this.returnedArray = x.slice(0,10));
   }
-
+  changeEmployee(){
+    this.openModal();
+    this.employee = {
+      identificationTypeId:0,
+      idnumbers:0,
+      name : null,
+      lastname : null,
+      areaTypeId: null,
+      subArea : null
+    }
+  }
   OganizeidentificationType(){
     this.service.getIdentificationTypesList().subscribe(
       id =>{
@@ -42,7 +58,13 @@ export class ShowEmployeeComponent implements OnInit {
       }
     )
   }
-
+  getlength(){
+    this.service.getEmployeesList().subscribe(
+      id =>{
+        this.listLength = id.length;
+      }
+    )
+  }
   OganizeArea(){
     this.service.getAreaTypesList().subscribe(
       id =>{
