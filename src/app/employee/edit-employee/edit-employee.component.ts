@@ -43,14 +43,13 @@ export class EditEmployeeComponent implements OnInit {
       var completed = document.getElementById('add-success-alert')
       if(completed){
         completed.style.display = "block"
-        this.identificationTypeId = 0;
-        this.idnumbers = 0;
-        this.name = "";
-        this.lastname = "";
-        this.areaTypeId = 0;
-        this.subArea = "";
       }
-
+      this.identificationTypeId = 0;
+      this.idnumbers = 0;
+      this.name = "";
+      this.lastname = "";
+      this.areaTypeId = 0;
+      this.subArea = "";
     },
     );
   }
