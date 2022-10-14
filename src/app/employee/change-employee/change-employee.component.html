@@ -1,6 +1,10 @@
 <form>
   <div class="mb-3">
     <div class="mb-3">
+      <label for="Employee" class="form-label">Employee number #</label>
+      <input type="text" class="form-control" [(ngModel)]="id" name="idemployee" disabled>
+    </div>
+    <div class="mb-3">
       <label for="Employee" class="form-label">Identification type:</label>
       <select class="form-control" name="identificationTypeId" id="identificationTypeId" [(ngModel)]="identificationTypeId">
         <option *ngFor="let idtype of identificationTypesList$|async" [value]="idtype.id">{{idtype.option}}</option>
@@ -33,6 +37,6 @@
     Update
   </button>
 </form>
-<div class="alert alert-primary" role="alert" id="add-success-aler">
-  This is a primary alert—check it out!
+<div class="alert alert-primary" role="alert" id="add-success-alert">
+  Employee information updated!!!!
 </div>

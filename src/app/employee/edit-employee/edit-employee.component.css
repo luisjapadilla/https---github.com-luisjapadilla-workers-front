@@ -1,3 +1,17 @@
 #add-success-alert{
   display: none;
 }
+.card {
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 20px;
+  width: 50rem;
+  margin-top: auto;
+
+}
+.back{
+  background-image: linear-gradient(157deg, #1d4851 16.67%, #5ebdd4 16.67%, #5ebdd4 33.33%, #eeb0b7 33.33%, #eeb0b7 50%, #1d4851 50%, #1d4851 66.67%, #5ebdd4 66.67%, #5ebdd4 83.33%, #eeb0b7 83.33%, #eeb0b7 100%);
+  background-size: 307.12px 130.36px;
+    height: 100vh;
+  width: 100%;
+}

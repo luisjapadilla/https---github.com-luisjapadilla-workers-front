@@ -15,7 +15,10 @@ export class ChangeEmployeeComponent implements OnInit {
   areaTypesList$!:Observable<any[]>;
   areaTypesList:any=[];
 
-  @Input() employee:any
+  constructor(private service:WorkersApiService) { }
+
+  @Input() employeeinfo:any;
+  id!:number;
   identificationTypeId!:number;
   idnumbers!:number;
   name : string = "";
@@ -23,7 +26,15 @@ export class ChangeEmployeeComponent implements OnInit {
   areaTypeId!:number;
   subArea : string = "";
 
-  constructor(private service:WorkersApiService) { }
+  ngOnChanges() {
+    this.id = this.employeeinfo.id;
+    this.identificationTypeId = this.employeeinfo.identificationTypeId;
+    this.idnumbers = this.employeeinfo.idNumber;
+    this.name = this.employeeinfo.name;
+     this.lastname = this.employeeinfo.lastname;
+     this.areaTypeId = this.employeeinfo.areatypeId;
+   this.subArea = this.employeeinfo.subArea;
+  }
 
   ngOnInit(): void {
     this.employeeList$ = this.service.getEmployeesList();
@@ -32,6 +43,7 @@ export class ChangeEmployeeComponent implements OnInit {
   }
   UpdateEmployee(){
     var employee = {
+      id: this.id,
       identificationTypeId:this.identificationTypeId,
       idNumber: this.idnumbers,
       name: this.name,
@@ -39,12 +51,21 @@ export class ChangeEmployeeComponent implements OnInit {
       areatypeId: this.areaTypeId,
       subArea: this.subArea
     }
-    this.service.updateEmployee(2,employee).subscribe( resolution => {
-      var completed = document.getElementById('add-success-aler')
+    this.service.updateEmployee(this.id, employee).subscribe( resolution => {
+      var completed = document.getElementById('add-success-alert')
       if(completed){
         completed.style.display = "block"
       }
+      this.identificationTypeId = 0;
+      this.idnumbers = 0;
+      this.name = "";
+      this.lastname = "";
+      this.areaTypeId = 0;
+      this.subArea = "";
+
+
     },
+
     );
   }
 }

@@ -1,38 +1,43 @@
-<form>
-  <div class="mb-3">
-    <div class="mb-3">
-      <label for="Employee" class="form-label">Identification type:</label>
-      <select class="form-control" name="identificationTypeId" id="identificationTypeId" [(ngModel)]="identificationTypeId">
-        <option *ngFor="let idtype of identificationTypesList$|async" [value]="idtype.id">{{idtype.option}}</option>
-      </select>
+<div class="back">
+    <div class="card mb-3 justify-content-center mx-auto">
+      <form class="form-horizontal">
+        <div class="mb-3">
+          <label for="Employee" class="form-label">Identification type:</label>
+          <select class="form-control" name="identificationTypeId" id="identificationTypeId" [(ngModel)]="identificationTypeId">
+            <option *ngFor="let idtype of identificationTypesList$|async" [value]="idtype.id">{{idtype.option}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="Employee" class="form-label">ID number:</label>
+          <input type="text" class="form-control" [(ngModel)]="idnumbers" name="idnumbers">
+        </div>
+        <div class="form-group">
+          <div class="">
+            <label for="Employee" class="form-label">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="name" name="name">
+          </div>
+          <div class="">
+            <label for="Employee" class="form-label">Lastname</label>
+            <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="areaTypeId" class="form-label">Area</label>
+          <select class="form-control" name="areaTypeId" id="areaTypeId" [(ngModel)]="areaTypeId">
+            <option *ngFor="let idtype of areaTypesList$|async" [value]="idtype.id">{{idtype.areaName}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="Employee" class="form-label">Sub-area (rol)</label>
+          <input type="text" class="form-control" [(ngModel)]="subArea" name="subArea">
+        </div>
+        <button (click)="addEmployee()" class="btn btn-primary">
+          Add
+        </button>
+      </form>
+
     </div>
-    <div class="mb-3">
-      <label for="Employee" class="form-label">ID number:</label>
-      <input type="text" class="form-control" [(ngModel)]="idnumbers" name="idnumbers">
-    </div>
-    <div class="mb-3">
-      <label for="Employee" class="form-label">Name</label>
-      <input type="text" class="form-control" [(ngModel)]="name" name="name">
-    </div>
-    <div class="mb-3">
-      <label for="Employee" class="form-label">Lastname</label>
-      <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname">
-    </div>
-    <div class="mb-3">
-      <label for="areaTypeId" class="form-label">Area</label>
-      <select class="form-control" name="areaTypeId" id="areaTypeId" [(ngModel)]="areaTypeId">
-        <option *ngFor="let idtype of areaTypesList$|async" [value]="idtype.id">{{idtype.areaName}}</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="Employee" class="form-label">Sub-area (rol)</label>
-      <input type="text" class="form-control" [(ngModel)]="subArea" name="subArea">
-    </div>
-  </div>
-  <button (click)="addEmployee()" class="btn btn-primary">
-    Add
-  </button>
-</form>
+</div>
 <div class="alert alert-primary" role="alert" id="add-success-alert">
   Employee added!!!!
 </div>

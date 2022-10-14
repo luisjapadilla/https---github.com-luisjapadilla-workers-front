@@ -37,16 +37,9 @@ export class ShowEmployeeComponent implements OnInit {
     this.getlength();
     this.employeeList$.subscribe(x => this.returnedArray = x.slice(0,10));
   }
-  changeEmployee(){
-    this.openModal();
-    this.employee = {
-      identificationTypeId:0,
-      idnumbers:0,
-      name : null,
-      lastname : null,
-      areaTypeId: null,
-      subArea : null
-    }
+  changeEmployee(info:any){
+    this.employee = info;
+     this.openModal();
   }
   OganizeidentificationType(){
     this.service.getIdentificationTypesList().subscribe(

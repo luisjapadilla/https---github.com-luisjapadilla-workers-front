@@ -1,20 +1,41 @@
-
-
 .container {
   padding-top: 50px;
   padding-bottom: 10px;
-  color: #405065;
+  color: #406558;
 }
 
 .search-hero {
   max-width: 500px;
   padding-bottom: 50px;
+  padding-top: 50px;
   margin:auto;
 }
 
 .form-control {
-  box-shadow: 0 10px 40px 0 #B0C1D9;
+  box-shadow: 0 10px 40px 0 #120101;
 }
 .form-control::placeholder  {
   font-family: FontAwesome;
 }
+
+  .card{
+    margin: 20px;
+    box-shadow: 10px 10px;
+  }
+
+  .my-pagination{
+    margin: 20pc;
+    margin-left: 20px;
+    color: #000;
+  }
+.Back{
+  background-image: linear-gradient(157deg, #1d4851 16.67%, #5ebdd4 16.67%, #5ebdd4 33.33%, #eeb0b7 33.33%, #eeb0b7 50%, #1d4851 50%, #1d4851 66.67%, #5ebdd4 66.67%, #5ebdd4 83.33%, #eeb0b7 83.33%, #eeb0b7 100%);
+  background-size: 307.12px 130.36px;
+  height: 100vh;
+  width: 100%;
+}
+.logo{
+  size: 100px;
+  height: 100px;
+}
+

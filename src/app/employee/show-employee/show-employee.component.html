@@ -1,30 +1,50 @@
-<div class="search-hero">
-  <input class="form-control" type="text" name="search" autocomplete="off" [(ngModel)]="searchText" placeholder="Look for an specific employee by ANY means necesary">
+
+<div class="Back">
+  <div class="search-hero">
+    <input class="form-control" type="text" name="search" autocomplete="off" [(ngModel)]="searchText" placeholder="Look for an specific employee by ANY means necesary">
+  </div>
+  <div class="card">
+    <table class="table table-success table-striped">
+      <thead class="thead-dark">
+        <th>ID #</th>
+        <th>name</th>
+        <th>Lastname</th>
+        <th>Identification type</th>
+        <th>Identification number</th>
+        <th>Area</th>
+        <th>Subarea</th>
+        <th>Options</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of returnedArray |filter:searchText">
+          <td>{{employee.id}}</td>
+          <td>{{employee.name}}</td>
+          <td>{{employee.lastname}}</td>
+          <td>{{IdentificationTypeMap.get(employee.identificationTypeId)}}</td>
+          <td>{{employee.idNumber}}</td>
+          <td>{{AreaTypeMap.get(employee.identificationTypeId)}}</td>
+          <td>{{employee.subArea}}</td>
+          <td><button type="button" class="btn btn-warning" (click)="changeEmployee(employee)">Edit</button></td>
+      </tbody>
+      <tfoot>
+        <th>ID #</th>
+        <th>name</th>
+        <th>Lastname</th>
+        <th>Identification type</th>
+        <th>Identification number</th>
+        <th>Area</th>
+        <th>Subarea</th>
+        <th>Options</th>
+      </tfoot>
+    </table>
+  </div>
+  <pagination class="my-pagination"[totalItems]="listLength" (pageChanged)="pageChanged($event)"></pagination>
+  <div class="float-right">
+    <a class="white-circle" href="index.php">
+      <img class= "logo" src="assets/Logo_WEBHELP.png" alt="Logo">
+  </a>
+  </div>
 </div>
-<table class="table table-striped">
-  <thead>
-    <th>ID</th>
-    <th>Identification type</th>
-    <th>Identification number</th>
-    <th>name</th>
-    <th>Lastname</th>
-    <th>Area</th>
-    <th>Subarea</th>
-    <th>Options</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let employee of returnedArray |filter:searchText">
-      <td>{{employee.id}}</td>
-      <td>{{IdentificationTypeMap.get(employee.identificationTypeId)}}</td>
-      <td>{{employee.idNumber}}</td>
-      <td>{{employee.name}}</td>
-      <td>{{employee.lastname}}</td>
-      <td>{{AreaTypeMap.get(employee.identificationTypeId)}}</td>
-      <td>{{employee.subArea}}</td>
-      <td><button type="button" class="btn btn-secondary" (click)="changeEmployee()">Edit</button></td>
-  </tbody>
-</table>
-<pagination [totalItems]="listLength" (pageChanged)="pageChanged($event)"></pagination>
 
 <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
   <div class="modal-dialog" role="document">
@@ -34,7 +54,7 @@
                     <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
                   </div>
          <div class="modal-body">
-          <app-change-employee [employee]="employee"></app-change-employee>
+          <app-change-employee [employeeinfo]="employee" ></app-change-employee>
                   </div>
               <div class="modal-footer">
                     <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
